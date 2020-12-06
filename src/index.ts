@@ -9,12 +9,13 @@ var cors = require('cors')
 const app = express();
 const port = 3000;
 
+app.set('port', process.env.PORT || 3000)
 app.use(cors())
 app.use(bodyParser.json()); // body en formato json
 app.use(bodyParser.urlencoded({ extended: true })); //body formulario
 
 app.listen(port, () =>{
-    console.log("Aplicación escuchandose en puerto: ", port );
+    console.log("Aplicación escuchandose en puerto: ", process.env.PORT);
 });
 
 app.post('/', (req,res) => {
@@ -50,7 +51,8 @@ app.post('/', (req,res) => {
 
     const pdfBytes = await pdfDoc.save()
     fs.writeFileSync('./importan-3.pdf', pdfBytes);
-    res.send("Hola Mundo")
+    var path = require('path');
+    res.sendFile(path.join(__dirname, '../', 'importan-3.pdf'))
     }
     
     modifyPdf()

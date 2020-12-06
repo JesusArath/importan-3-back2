@@ -1,10 +1,9 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -18,11 +17,12 @@ var bodyParser = require('body-parser'); // instalar: npm install body-parser
 var cors = require('cors');
 const app = express_1.default();
 const port = 3000;
+app.set('port', process.env.PORT || 3000);
 app.use(cors());
 app.use(bodyParser.json()); // body en formato json
 app.use(bodyParser.urlencoded({ extended: true })); //body formulario
 app.listen(port, () => {
-    console.log("Aplicación escuchandose en puerto: ", port);
+    console.log("Aplicación escuchandose en puerto: ", process.env.PORT);
 });
 app.post('/', (req, res) => {
     const lel = req.body;
@@ -50,7 +50,8 @@ app.post('/', (req, res) => {
             });
             const pdfBytes = yield pdfDoc.save();
             fs.writeFileSync('./importan-3.pdf', pdfBytes);
-            res.send("Hola Mundo");
+            var path = require('path');
+            res.sendFile(path.join(__dirname, '../', 'importan-3.pdf'));
         });
     }
     modifyPdf();
