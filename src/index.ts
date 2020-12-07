@@ -54,7 +54,7 @@ app.post('/', (req,res) => {
     const pdfBytes = await pdfDoc.save()
     fs.writeFileSync('./importan-3.pdf', pdfBytes);
     var path = require('path');
-    res.sendFile(path.join(__dirname, 'importan-3.pdf'))
+    res.sendFile(path.join(__dirname, '../importan-3.pdf'))
     }
     
     modifyPdf()
