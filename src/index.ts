@@ -17,7 +17,9 @@ app.use(bodyParser.urlencoded({ extended: false })); //body formulario
 app.listen(port, () =>{
     console.log("Aplicación escuchandose en puerto: ", process.env.PORT);
 });
-
+app.get("/", (req,res) => {
+    res.send("Hola Mundo")
+})
 app.post('/', (req,res) => {
 
     const lel = req.body
