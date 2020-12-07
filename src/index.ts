@@ -14,7 +14,7 @@ app.use(cors())
 app.use(bodyParser.json()); // body en formato json
 app.use(bodyParser.urlencoded({ extended: false })); //body formulario
 
-app.listen(port, () =>{
+app.listen( process.env.PORT, () =>{
     console.log("Aplicación escuchandose en puerto: ", process.env.PORT);
 });
 app.get("/", (req,res) => {
