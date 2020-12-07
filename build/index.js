@@ -20,7 +20,7 @@ const port = 3000;
 app.set('port', process.env.PORT || 3000);
 app.use(cors());
 app.use(bodyParser.json()); // body en formato json
-app.use(bodyParser.urlencoded({ extended: true })); //body formulario
+app.use(bodyParser.urlencoded({ extended: false })); //body formulario
 app.listen(port, () => {
     console.log("Aplicación escuchandose en puerto: ", process.env.PORT);
 });
