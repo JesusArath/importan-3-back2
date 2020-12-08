@@ -24,7 +24,7 @@ app.post('/', (req,res) => {
 
     const lel = req.body
     const datos = lel.prima
-    const resultado = `${datos}.00 pesos`
+    const resultado = `${datos} pesos`
 
     
     const fs = require('fs');
