@@ -49,7 +49,7 @@ app.post('/', (req, res) => {
                 y: 180,
                 size: 20,
                 font: helveticaFont,
-                color: pdf_lib_1.rgb(255, 255, 255),
+                color: pdf_lib_1.rgb(1, 1, 1),
             });
             const pdfBytes = yield pdfDoc.save();
             fs.writeFileSync('./importan-3.pdf', pdfBytes);
