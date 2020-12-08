@@ -48,7 +48,7 @@ app.post('/', (req,res) => {
         y: 180,
         size: 20,
         font: helveticaFont,
-        color: rgb(0.95, 0.1, 0.1),
+        color: rgb(255,255,255),
     })
 
     const pdfBytes = await pdfDoc.save()
